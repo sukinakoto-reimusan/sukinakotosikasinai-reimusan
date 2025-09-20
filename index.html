@@ -32,7 +32,7 @@
     .dropdown-header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-between; /* タイトルと日付を左右に分ける */
       cursor: pointer;
       background: #fff;
       transition: background 0.2s;
@@ -62,7 +62,7 @@
     .dropdown-date {
       font-size: 12px;
       color: #888;
-      margin-left: auto;
+      margin-left: auto; /* 右端へ */
       white-space: nowrap;
     }
 
@@ -120,41 +120,39 @@
     問題が起きても対応しない可能性があります。<br>
   </div>
 
-  <div id="main-container">
-    <div class="dropdown" id="適当に作ったScratchです" data-date="2025-09-21">
-      <div class="dropdown-header">
-        <div class="header-left">
-          <span class="arrow">▶</span>
-          適当に作ったScratchです
-        </div>
-        <div class="dropdown-date"></div>
+
+
+  <div class="dropdown" id="適当に作ったScratchです" data-date="2025-09-21">
+    <div class="dropdown-header">
+      <div class="header-left">
+        <span class="arrow">▶</span>
+        適当に作ったScratchです
       </div>
-      <div class="dropdown-content">
-        <a class="btn" href="https://github.com/sukinakoto-reimusan/sukinakotosikasinai-reimusan/releases/download/main/Scratch_data_1.sb3">
-          Scratchのプロジェクトのダウンロードリンク
-        </a>
-      </div>
+      <div class="dropdown-date"></div>
+    </div>
+    <div class="dropdown-content">
+      <a class="btn" href="https://github.com/sukinakoto-reimusan/sukinakotosikasinai-reimusan/releases/download/main/Scratch_data_1.sb3">
+        Scratchのプロジェクトのダウンロードリンク
+      </a>
     </div>
   </div>
 
   <script>
     // ▼ ドロップダウン開閉
-    function setupDropdowns(root=document) {
-      root.querySelectorAll('.dropdown-header').forEach(header => {
-        header.addEventListener('click', () => {
-          header.parentElement.classList.toggle('open');
-        });
+    document.querySelectorAll('.dropdown-header').forEach(header => {
+      header.addEventListener('click', () => {
+        header.parentElement.classList.toggle('open');
       });
+    });
 
-      root.querySelectorAll('.dropdown').forEach(dropdown => {
-        const date = dropdown.getAttribute('data-date');
-        if (date) {
-          const dateElement = dropdown.querySelector('.dropdown-date');
-          if (dateElement) dateElement.textContent = date;
-        }
-      });
-    }
-    setupDropdowns();
+    // ▼ 日付表示（data-date 属性があれば表示）
+    document.querySelectorAll('.dropdown').forEach(dropdown => {
+      const date = dropdown.getAttribute('data-date');
+      if (date) {
+        const dateElement = dropdown.querySelector('.dropdown-date');
+        if (dateElement) dateElement.textContent = date;
+      }
+    });
 
     // ▼ GETパラメータで指定されたIDを開く & スクロール
     const params = new URLSearchParams(window.location.search);
@@ -166,48 +164,6 @@
         target.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }
-
-    // ▼ サブフォルダの index.html を読み込む
-    async function loadSubfolders() {
-      try {
-        const res = await fetch("./");
-        const text = await res.text();
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(text, "text/html");
-        const links = [...doc.querySelectorAll("a")]
-          .map(a => a.getAttribute("href"))
-          .filter(href => href && href.endsWith("/"));
-
-        const dropdowns = [];
-        for (const folder of links) {
-          try {
-            const htmlRes = await fetch(folder + "index.html");
-            if (!htmlRes.ok) continue;
-            const htmlText = await htmlRes.text();
-            const htmlDoc = parser.parseFromString(htmlText, "text/html");
-            htmlDoc.querySelectorAll(".dropdown").forEach(el => {
-              dropdowns.push(el);
-            });
-          } catch (err) {
-            console.warn("フォルダ読み込み失敗:", folder, err);
-          }
-        }
-
-        // 日付でソート（降順）
-        dropdowns.sort((a, b) => {
-          const da = a.getAttribute("data-date") || "";
-          const db = b.getAttribute("data-date") || "";
-          return db.localeCompare(da);
-        });
-
-        const container = document.getElementById("main-container");
-        dropdowns.forEach(el => container.prepend(el));
-        setupDropdowns(document); // 新しく追加した要素にもイベント設定
-      } catch (e) {
-        console.error("フォルダ一覧取得失敗", e);
-      }
-    }
-    loadSubfolders();
   </script>
 </body>
 </html>
