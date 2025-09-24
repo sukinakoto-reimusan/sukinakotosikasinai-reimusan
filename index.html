@@ -1,20 +1,24 @@
 <!doctype html>
 <html lang="ja">
-<head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DR4LB33GM7"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-DR4LB33GM7');
-</script>
+<head>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-DR4LB33GM7');
+  </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>配布サイト</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: #f6f7fb;
@@ -35,13 +39,14 @@
       border-radius: 8px;
       background: white;
       overflow: hidden;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     }
 
     .dropdown-header {
       display: flex;
       align-items: center;
-      justify-content: space-between; /* タイトルと日付を左右に分ける */
+      justify-content: space-between;
+      /* タイトルと日付を左右に分ける */
       cursor: pointer;
       background: #fff;
       transition: background 0.2s;
@@ -49,6 +54,7 @@
       font-size: 16px;
       font-weight: 500;
     }
+
     .dropdown-header:hover {
       background: #f2f3f5;
     }
@@ -64,14 +70,16 @@
       transition: transform 0.2s ease;
       transform: rotate(0deg);
     }
-.dropdown.open > .dropdown-header .arrow {
-  transform: rotate(90deg);
-}
+
+    .dropdown.open>.dropdown-header .arrow {
+      transform: rotate(90deg);
+    }
 
     .dropdown-date {
       font-size: 12px;
       color: #888;
-      margin-left: auto; /* 右端へ */
+      margin-left: auto;
+      /* 右端へ */
       white-space: nowrap;
     }
 
@@ -80,7 +88,8 @@
       padding: 8px 16px;
       border-top: 1px solid #eee;
     }
-    .dropdown.open > .dropdown-content {
+
+    .dropdown.open>.dropdown-content {
       display: block;
     }
 
@@ -109,6 +118,7 @@
       transition: background 0.15s;
       margin: 4px 0;
     }
+
     .btn:hover {
       background: #e2e2e2;
     }
@@ -120,13 +130,47 @@
       color: #000;
       line-height: 1.6;
     }
+
+    /* ▼ コードブロック風デザイン */
+    .code-block {
+      position: relative;
+      background: #1e1e1e;
+      color: #dcdcdc;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 14px;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 8px 0;
+    }
+
+    .code-block pre {
+      margin: 0;
+      white-space: pre;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: #333;
+      color: white;
+      border: none;
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    .copy-btn:hover {
+      opacity: 1;
+    }
   </style>
 </head>
+
 <body>
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5BQ3KJDT"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
   <div class="section-title">配布サイト</div>
   <a class="btn1" href="https://forms.gle/3YJZMnzbksPotz6S7">フォームはこちら</a>
   <div class="text">
@@ -134,6 +178,338 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     自己責任でお願いします。<br>
     ※自由に改造・再配布OKです（クレジット表記不要）。<br>
   </div>
+
+
+  <div class="dropdown" id="Github上にバックアップするプログラム！" data-date="2025-09-24">
+    <div class="dropdown-header">
+      <div class="header-left">
+        <span class="arrow">▶</span>
+        Github上にバックアップするプログラム！
+      </div>
+      <div class="dropdown-date"></div>
+    </div>
+    <div class="dropdown-content">
+      <a class="btn"
+        href="https://github.com/sukinakoto-reimusan/sukinakotosikasinai-reimusan/releases/download/main/backup.py">
+        ソースコードダウンロードリンク
+      </a>
+      <div class="dropdown ">
+        <div class="dropdown-header">
+          <div class="header-left">
+            <span class="arrow">▶</span>
+            初期準備
+          </div>
+          <div class="dropdown-date"></div>
+        </div>
+        <div class="dropdown-content">
+          <div class="text">
+            <div class="dropdown ">
+              <div class="dropdown-header">
+                <div class="header-left">
+                  <span class="arrow">▶</span>
+                  1：Gitのインストール
+                </div>
+                <div class="dropdown-date"></div>
+              </div>
+              <div class="dropdown-content">
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyCode(this)">コピー</button>
+                  <pre>winget install --id Git.Git -e --source winget</pre>
+                </div>
+                上記のコードをpowershellで実行してください。<br>
+                ライセンスへの同意などが求められた場合はしっかり読んでください。<br><Br>
+                これでGitコマンドが入ったと考えます。分からなかった場合は各自で調べてみてください。<br>
+              </div>
+            </div>
+            <div class="dropdown ">
+              <div class="dropdown-header">
+                <div class="header-left">
+                  <span class="arrow">▶</span>
+                  2：Pythonのインストールとライブラリのインストール
+                </div>
+                <div class="dropdown-date"></div>
+              </div>
+              <div class="dropdown-content">
+                次にPythonをダウンロードします。<br>
+                ダウンロード方法などは各自調べてください。<br>
+                次に以下のコマンドをpowershellで実行してください。<br>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyCode(this)">コピー</button>
+                  <pre>pip install requests</pre>
+                </div>
+                もし、Pythonを入れた直後の場合はpowershellを再起動してください。<Br>
+              </div>
+            </div>
+            <div class="dropdown ">
+              <div class="dropdown-header">
+                <div class="header-left">
+                  <span class="arrow">▶</span>
+                  3：Gitの初期設定
+                </div>
+                <div class="dropdown-date"></div>
+              </div>
+              <div class="dropdown-content">
+                次にgitの初期設定をします<br>
+                以下のコマンドをpowershellで実行してください。<br>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyCode(this)">コピー</button>
+                  <pre>git config --global user.name "あなたの名前"</pre>
+                  <pre>git config --global user.email "あなたのメールアドレス"</pre>
+                </div>
+                これで初期設定は終わりです。<br>
+                ですが、実行するための必要項目はまだあります。
+                <Br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown ">
+        <div class="dropdown-header">
+          <div class="header-left">
+            <span class="arrow">▶</span>
+            コード実行
+          </div>
+          <div class="dropdown-date"></div>
+        </div>
+
+        <div class="dropdown-content">
+          <div class="text">
+            <div class="dropdown ">
+              <div class="dropdown-header">
+                <div class="header-left">
+                  <span class="arrow">▶</span>
+                  1：初期設定
+                </div>
+                <div class="dropdown-date"></div>
+              </div>
+              <div class="dropdown-content">
+                以下のPythonコードの部分は変更してください。<br>
+                <div class="code-block">
+                  <button class="copy-btn" onclick="copyCode(this)">コピー</button>
+                  <pre>OWNER = "{Githubアカウント名}"</pre>
+                  <pre>REPO = "{Github基準リポ名}"</pre>
+                  <pre>TARGET_FOLDER = r"{バックアップする基準フォルダ}"</pre>
+                  <pre>#--- 以下例 ---#</pre>
+                  <pre>EXT_JSON = r"C:\Projects\バックアップ機能\data\extensions.json"</pre>
+                  <pre>EXCLUDE_JSON = r"C:\Projects\バックアップ機能\data\exclude.json"</pre>
+                  <pre>REPOS_JSON = r"C:\Projects\バックアップ機能\data\repos.json"</pre>
+                  <pre>ZIPS_JSON = r"C:\Projects\バックアップ機能\data\zips.json"</pre>
+                  <pre>REPO_LIST_TXT = r"C:\Projects\バックアップ機能\data\repo_list.txt"
+HASH_CACHE_JSON = r"C:\Projects\バックアップ機能\data\hash_cache.json"
+TEMP_BASE = r"C:\temp\BackupTemp"</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="dropdown ">
+            <div class="dropdown-header">
+              <div class="header-left">
+                <span class="arrow">▶</span>
+                2：各選択肢の意味
+              </div>
+              <div class="dropdown-date"></div>
+            </div>
+            <div class="dropdown-content">
+              <div class="text">
+                基本は名前のままです。<br>
+                <div class="dropdown ">
+                  <div class="dropdown-header">
+                    <div class="header-left">
+                      <span class="arrow">▶</span>
+                      1
+                    </div>
+                    <div class="dropdown-date"></div>
+                  </div>
+                  <div class="dropdown-content">
+                    一番よく使うと思います。<br>
+                    実際のアップロード処理が開始されます。<br>
+                    これを実行するとGithub上にバックアップされる、ぐらいのイメージでいいです。<br>
+                    １番のみ引数で--1をつけると自動で選択肢を1で実行してくれます。<Br>
+                    ※拡張子フィルタが反映されるので、3番で拡張子を設定しておく必要があります。<br>
+                    ※除外フォルダで選択されたもの、ZIPフォルダ登録、別リポ登録をしたフォルダは自動で除外されます
+                  </div>
+                </div>
+                <div class="dropdown ">
+                  <div class="dropdown-header">
+                    <div class="header-left">
+                      <span class="arrow">▶</span>
+                      2
+                    </div>
+                    <div class="dropdown-date"></div>
+                  </div>
+                  <div class="dropdown-content">
+                    登録している拡張子一覧を教えてくれます。<br>
+                  </div>
+                </div>
+                <div class="dropdown ">
+                  <div class="dropdown-header">
+                    <div class="header-left">
+                      <span class="arrow">▶</span>
+                      3
+                    </div>
+                    <div class="dropdown-date"></div>
+                  </div>
+                  <div class="dropdown-content">
+                    拡張子を追加できます。<br>
+                    拡張子を追加しないと何もGithub上に上げられません。<Br>
+                    入力形式は<div class="code-block"><button class="copy-btn" onclick="copyCode(this)">コピー</button>
+                      <pre>.○○</pre>
+                    </div>という形です。
+                  </div>
+                </div>
+                <div class="dropdown ">
+                  <div class="dropdown-header">
+                    <div class="header-left">
+                      <span class="arrow">▶</span>
+                      4
+                    </div>
+                    <div class="dropdown-date"></div>
+                  </div>
+                  <div class="dropdown-content">
+                    拡張子を削除できます。
+                  </div>
+                </div>
+                <div class="dropdown ">
+                  <div class="dropdown-header">
+                    <div class="header-left">
+                      <span class="arrow">▶</span>
+                      5
+                    </div>
+                    <div class="dropdown-date"></div>
+                  </div>
+                  <div class="dropdown-content">
+                    除外フォルダ一覧です。<br>
+                  </div>
+                </div>
+                <div class="dropdown ">
+                  <div class="dropdown-header">
+                    <div class="header-left">
+                      <span class="arrow">▶</span>
+                      6
+                    </div>
+                    <div class="dropdown-date"></div>
+                  </div>
+                  <div class="dropdown-content">
+                    除外フォルダ追加です。<br>
+                    除外フォルダの用途としては、保存内に余計なものがあるが、それを含めたくない、などです。<br>
+                    ZIP登録や別リポに登録されていても、ここで登録すると強制除外となります。
+                  </div>
+                </div>
+                <div class="dropdown ">
+                  <div class="dropdown-header">
+                    <div class="header-left">
+                      <span class="arrow">▶</span>
+                      7
+                    </div>
+                    <div class="dropdown-date"></div>
+                  </div>
+                  <div class="dropdown-content">
+                    除外フォルダ削除です。
+                  </div>
+                </div>
+                <div class="dropdown ">
+                  <div class="dropdown-header">
+                    <div class="header-left">
+                      <span class="arrow">▶</span>
+                      8
+                    </div>
+                    <div class="dropdown-date"></div>
+                  </div>
+                  <div class="dropdown-content">
+                    別リポ一覧です。<br>
+                  </div>
+                </div>
+                <div class="dropdown ">
+                  <div class="dropdown-header">
+                    <div class="header-left">
+                      <span class="arrow">▶</span>
+                      9
+                    </div>
+                    <div class="dropdown-date"></div>
+                  </div>
+                  <div class="dropdown-content">
+                    別リポ追加です。ここではどのフォルダを別リポに設定するか、を選択します。<br>
+                    別リポの記述は"REPO_LIST_TXT"変数で指定したテキストファイルに箇条書きでリポジトリ名を書いていきます。<Br>
+                    <div class="code-block"><button class="copy-btn" onclick="copyCode(this)">コピー</button>
+                      <pre>backup_repo1</pre>
+                      <pre>backup_repo2</pre>
+                      <pre>backup_repo3</pre>
+                    </div>
+                  </div>
+                </div>
+                <div class="dropdown ">
+                  <div class="dropdown-header">
+                    <div class="header-left">
+                      <span class="arrow">▶</span>
+                      10
+                    </div>
+                    <div class="dropdown-date"></div>
+                  </div>
+                  <div class="dropdown-content">
+                    別リポ削除です。<br>
+                  </div>
+                </div>
+                <div class="dropdown ">
+                  <div class="dropdown-header">
+                    <div class="header-left">
+                      <span class="arrow">▶</span>
+                      11
+                    </div>
+                    <div class="dropdown-date"></div>
+                  </div>
+                  <div class="dropdown-content">
+                    終了です。プログラムが止まります。<Br>基本的に入力欄で"cancel"と打つ事でも止まります。<br>
+                  </div>
+                </div>
+                <div class="dropdown ">
+                  <div class="dropdown-header">
+                    <div class="header-left">
+                      <span class="arrow">▶</span>
+                      12
+                    </div>
+                    <div class="dropdown-date"></div>
+                  </div>
+                  <div class="dropdown-content">
+                    ZIPにすると登録したフォルダ一覧です。<br>
+                  </div>
+                </div>
+                <div class="dropdown ">
+                  <div class="dropdown-header">
+                    <div class="header-left">
+                      <span class="arrow">▶</span>
+                      13
+                    </div>
+                    <div class="dropdown-date"></div>
+                  </div>
+                  <div class="dropdown-content">
+                    フォルダをZIPに登録できます。<br>
+                    想定としてはUnityのプロジェクトフォルダを指定したりなどです。
+                  </div>
+                </div>
+                <div class="dropdown ">
+                  <div class="dropdown-header">
+                    <div class="header-left">
+                      <span class="arrow">▶</span>
+                      14
+                    </div>
+                    <div class="dropdown-date"></div>
+                  </div>
+                  <div class="dropdown-content">
+                    ZIPに指定したフォルダを削除できます。
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
   <div class="dropdown" id="証明写真作成アプリ！" data-date="2025-09-21">
     <div class="dropdown-header">
       <div class="header-left">
@@ -143,14 +519,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="dropdown-date"></div>
     </div>
     <div class="dropdown-content">
-      <a class="btn" href="https://github.com/sukinakoto-reimusan/sukinakotosikasinai-reimusan/releases/download/main/picuters_sourcecode.zip">
+      <a class="btn"
+        href="https://github.com/sukinakoto-reimusan/sukinakotosikasinai-reimusan/releases/download/main/picuters_sourcecode.zip">
         ソースコードダウンロードリンク
       </a>
 
-          <a class="btn" href="https://github.com/sukinakoto-reimusan/sukinakotosikasinai-reimusan/releases/download/main/pictures_APK.zip">
-            APKダウンロードリンク
-          </a>
-          <div class="dropdown " >
+      <a class="btn"
+        href="https://github.com/sukinakoto-reimusan/sukinakotosikasinai-reimusan/releases/download/main/pictures_APK.zip">
+        APKダウンロードリンク
+      </a>
+      <div class="dropdown ">
         <div class="dropdown-header">
           <div class="header-left">
             <span class="arrow">▶</span>
@@ -163,14 +541,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             zipがダウンロードされると思うので、中身を解凍し、ver1.3.apkを開いてください。<br>
             不明なアプリのインストールの許可が必要ですが、端末ごとに各自で調べてください。<br>
             インストール後は動画と同じようにすると動きます。<Br>
-              ※Android以外は対応していません。<br>
+            ※Android以外は対応していません。<br>
           </div>
         </div>
       </div>
     </div>
-        </div>
-      </div>
-    </div>
+  </div>
+  </div>
+  </div>
   </div>
 
   <div class="dropdown" id="CherryTreeのHTML出力を自分の好きな形に変えよう！" data-date="2025-09-21">
@@ -182,11 +560,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="dropdown-date"></div>
     </div>
     <div class="dropdown-content">
-      <a class="btn" href="https://github.com/sukinakoto-reimusan/sukinakotosikasinai-reimusan/releases/download/main/CherryTree.zip">
+      <a class="btn"
+        href="https://github.com/sukinakoto-reimusan/sukinakotosikasinai-reimusan/releases/download/main/CherryTree.zip">
         ソースコード・HTMLダウンロードリンク
       </a>
 
-      <div class="dropdown " >
+      <div class="dropdown ">
         <div class="dropdown-header">
           <div class="header-left">
             <span class="arrow">▶</span>
@@ -195,15 +574,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="dropdown-date"></div>
         </div>
         <div class="dropdown-content">
-          <a class="btn" href="https://github.com/sukinakoto-reimusan/sukinakotosikasinai-reimusan/releases/download/main/CherryTree_exe_.zip">
+          <a class="btn"
+            href="https://github.com/sukinakoto-reimusan/sukinakotosikasinai-reimusan/releases/download/main/CherryTree_exe_.zip">
             exe版ダウンロードリンク
           </a>
           <div class="text">
             zipがダウンロードされると思うので、中身を解凍し使う場合は「output_html.exe」をクリックしてください。<br>
-ファイル選択ダイアログが開いて、その後にフォルダ選択ダイアログが開きます。<br>
-ファイル選択ではCherryTreeから出力したテキストファイルを選択してください。<br>
-フォルダ選択ではどこにhtmlを出力するかです。同じフォルダにoutput.htmlがあった場合は上書きされるので注意してください。<br>
-sourceフォルダ内にはソースコードが入っています。そちらから実行しても挙動は同じです。<br>
+            ファイル選択ダイアログが開いて、その後にフォルダ選択ダイアログが開きます。<br>
+            ファイル選択ではCherryTreeから出力したテキストファイルを選択してください。<br>
+            フォルダ選択ではどこにhtmlを出力するかです。同じフォルダにoutput.htmlがあった場合は上書きされるので注意してください。<br>
+            sourceフォルダ内にはソースコードが入っています。そちらから実行しても挙動は同じです。<br>
           </div>
         </div>
       </div>
@@ -219,13 +599,23 @@ sourceフォルダ内にはソースコードが入っています。そちら�
       <div class="dropdown-date"></div>
     </div>
     <div class="dropdown-content">
-      <a class="btn" href="https://github.com/sukinakoto-reimusan/sukinakotosikasinai-reimusan/releases/download/main/Scratch_data_1.sb3">
+      <a class="btn"
+        href="https://github.com/sukinakoto-reimusan/sukinakotosikasinai-reimusan/releases/download/main/Scratch_data_1.sb3">
         Scratchのプロジェクトのダウンロードリンク
       </a>
     </div>
   </div>
 
   <script>
+    // ▼ コピー機能
+    function copyCode(button) {
+      const code = button.nextElementSibling.innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        button.textContent = "コピー済み！";
+        setTimeout(() => button.textContent = "コピー", 1500);
+      }).catch(() => alert("コピーに失敗しました"));
+    }
+
     // ▼ ドロップダウン開閉
     document.querySelectorAll('.dropdown-header').forEach(header => {
       header.addEventListener('click', () => {
@@ -233,7 +623,7 @@ sourceフォルダ内にはソースコードが入っています。そちら�
       });
     });
 
-    // ▼ 日付表示（data-date 属性があれば表示）
+    // ▼ 日付表示
     document.querySelectorAll('.dropdown').forEach(dropdown => {
       const date = dropdown.getAttribute('data-date');
       if (date) {
@@ -242,7 +632,7 @@ sourceフォルダ内にはソースコードが入っています。そちら�
       }
     });
 
-    // ▼ GETパラメータで指定されたIDを開く & スクロール
+    // ▼ URLパラメータで指定されたIDを開く
     const params = new URLSearchParams(window.location.search);
     const targetId = params.get("id");
     if (targetId) {
@@ -254,4 +644,5 @@ sourceフォルダ内にはソースコードが入っています。そちら�
     }
   </script>
 </body>
+
 </html>
