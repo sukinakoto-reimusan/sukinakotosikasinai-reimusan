@@ -642,7 +642,15 @@ TEMP_BASE = r"C:\temp\BackupTemp"</pre>
         target.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }
+  // ▼ URLパラメータ取得
+  const paramsa = new URLSearchParams(window.location.search);
+
+  // movie=1 がついていたら指定URLにリダイレクト
+  if (paramsa.get("movie") === "1") {
+    window.location.href = "https://example.com/your_movie_page"; 
+  }
   </script>
+  
 </body>
 
 </html>
